@@ -1,0 +1,86 @@
+# Gradle ve derleme ciktilari
+.gradle/
+build/
+out/
+bin/
+*.class
+*.war
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE ve editor ayarlari
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+.apt_generated/
+.springBeans
+.sts4-cache/
+.nb-gradle/
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/dist/
+
+# Yerel veritabanlari ve yedekler: gercek kitap/uye/odunc verileri
+/data/
+/backups/
+*.mv.db
+*.trace.db
+*.h2.db
+*.lock.db
+*.mdf
+*.ndf
+*.ldf
+*.bak
+*.backup
+*.dump
+
+# Windows Authentication DLL dosyalari otomatik indirilir
+/native/
+*.dll
+
+# Yerel baglanti ayarlari ve kimlik bilgileri
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-local.yaml
+application-secrets.properties
+application-secrets.yml
+application-secrets.yaml
+application-*.local.properties
+gradle.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+credentials.json
+
+# Makineye ozel belgeler ve SQL Server kurulum/ayar yedekleri
+/KURULUM.md
+/SQLSERVER-TCP-AYARLA.ps1
+/sqlserver-tcp-onceki-ayarlar.json
+/HELP.md
+
+# Gunlukler, gecici dosyalar ve isletim sistemi dosyalari
+*.log
+*.hprof
+hs_err_pid*
+replay_pid*
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

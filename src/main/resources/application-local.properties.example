@@ -1,0 +1,5 @@
+# Bu dosyayi application-local.properties olarak kopyalayin.
+# Gercek application-local.properties Git tarafindan dislanir.
+# Port ve veritabani adini kendi SQL Server kurulumunuza gore degistirin.
+# trustServerCertificate=true yalnizca yerel gelistirme icin orneklenmistir.
+spring.datasource.url=jdbc:sqlserver://localhost:14330;databaseName=Kutuphane;integratedSecurity=true;authenticationScheme=NativeAuthentication;encrypt=true;trustServerCertificate=true

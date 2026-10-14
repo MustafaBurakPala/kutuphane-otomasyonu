@@ -1,0 +1,57 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.1.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc:13.6.0.jre11'
+	runtimeOnly 'org.hibernate.orm:hibernate-community-dialects'
+	testRuntimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+
+
+configurations { sqlServerAuth }
+dependencies { sqlServerAuth 'com.microsoft.sqlserver:mssql-jdbc_auth:13.6.0.x64@dll' }
+
+tasks.register('prepareSqlServerAuth', Copy) {
+    from configurations.sqlServerAuth
+    into layout.projectDirectory.dir('native')
+}
+
+tasks.named('bootRun') {
+    dependsOn 'prepareSqlServerAuth'
+    jvmArgs "-Djava.net.preferIPv4Stack=true", "-Djava.library.path=${layout.projectDirectory.dir('native').asFile.absolutePath}"
+}
+
+
